@@ -31,10 +31,6 @@ public class MyArrayList <T> implements MyList<T> {
         array = arrayTemp;
     }
 
-    public int getSize(){
-        return size;
-    }
-
     public void printArray() {
         for (int i = 0; i < size; i++) {
             System.out.print(array[i] + " || ");
@@ -52,7 +48,10 @@ public class MyArrayList <T> implements MyList<T> {
     public Iterator<T> iterator() {
         return null;
     }
-
+    @Override
+    public int getSize() {
+        return size;
+    }
     @Override
     public T getFirst() {
         return null;
@@ -110,15 +109,6 @@ public class MyArrayList <T> implements MyList<T> {
     public Object[] toArray() {
         return new Object[0];
     }
-
-
-
-    @Override
-    public int size() {
-        return 0;
-    }
-
-
 
     @Override
     public void set(int index, T item) {
