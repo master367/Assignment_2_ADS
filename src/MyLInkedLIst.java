@@ -120,6 +120,7 @@ public class MyLInkedLIst<T> implements MyList<T> {
         return current.data;
 
     }
+
     private static class MyNode<E>{
         E data;
         MyNode<E> next;

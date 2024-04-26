@@ -1,7 +1,12 @@
+import java.util.ArrayList;
+
 public class Main {
     public static void main(String[] args) {
         MyArrayList<Integer> arrayList = new MyArrayList<>();
         MyLInkedLIst<Integer> lInkedLIst = new MyLInkedLIst<>();
+
+        ArrayList<Integer> arr = new ArrayList<>();
+
 
         arrayList.add(1);
         arrayList.add(7);
