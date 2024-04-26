@@ -42,6 +42,43 @@ public class MyArrayList <T> implements MyList<T> {
         if (index < 0 || index >= size)
             throw new IndexOutOfBoundsException("index not correct");
     }
+    @Override
+    public void sort() {
+        if (isArrayInteger().equals("int")) {
+            int n = size;
+            for (int i = 0; i < n - 1; i++)
+                for (int j = 0; j < n - i - 1; j++)
+                    if ((int) array[j] > (int) array[j + 1]) {
+                        T temp = (T) array[j];
+                        array[j] = array[j + 1];
+                        array[j + 1] = temp;
+                    }
+        }
+    }
+
+    public String isArrayInteger(){
+        int intSize = 0;
+        int doubleSize = 0;
+        for (int i = 0; i < size; i++) {
+            try {
+                int value = (Integer) array[i];
+                intSize++;
+            } catch (ClassCastException e) {
+            }
+            try {
+                double tempD = (Double) array[i];
+                doubleSize++;
+            } catch (ClassCastException e) {
+            }
+        }
+        if (intSize == size) {
+            return "int";
+        }
+        if (doubleSize == size) {
+            return "double";
+        }
+        return "0";
+    }
 
 
     @Override
@@ -84,12 +121,6 @@ public class MyArrayList <T> implements MyList<T> {
     public void removeLast() {
 
     }
-
-    @Override
-    public void sort() {
-
-    }
-
     @Override
     public int indexOf(Object object) {
         return 0;
