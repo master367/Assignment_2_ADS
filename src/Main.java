@@ -8,6 +8,7 @@ public class Main {
         ArrayList<Integer> arr = new ArrayList<>();
 
 
+
         arrayList.add(1);
         arrayList.add(7);
         arrayList.add(37);
@@ -34,13 +35,22 @@ public class Main {
 
 
 
-
-        lInkedLIst.add(1);
-        lInkedLIst.add(2);
-        lInkedLIst.add(3);
-        lInkedLIst.add(4);
+        lInkedLIst.add(6);
         lInkedLIst.add(5);
+        lInkedLIst.add(53);
+        lInkedLIst.add(0);
+        lInkedLIst.add(43);
 
-        System.out.println(lInkedLIst.get(2));
+        System.out.print("Linked list: ");
+        for(int i = 0; i < lInkedLIst.getSize(); i++){
+            System.out.print(lInkedLIst.get(i) + "  ");
+        }
+        System.out.println(" ");
+        System.out.print("Linked list sorted: ");
+        lInkedLIst.sort();
+        for(int i = 0; i < lInkedLIst.getSize(); i++){
+            System.out.print(lInkedLIst.get(i) + "  ");
+        }
+
     }
 }

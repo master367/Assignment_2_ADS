@@ -77,7 +77,17 @@ public class MyLInkedLIst<T> implements MyList<T> {
 
     @Override
     public void sort() {
-
+        for (int i = 0; i < size - 1 ; i++) {
+            MyNode<T> current = head;
+            for (int j = 0; j < size - i - 1; j++) {
+                if (((Comparable<T>) current.data).compareTo(current.next.data) > 0) {
+                    T t = current.data;
+                    current.data = current.next.data;
+                    current.next.data = t;
+                }
+                current = current.next;
+            }
+        }
     }
 
     @Override
@@ -107,7 +117,7 @@ public class MyLInkedLIst<T> implements MyList<T> {
 
     @Override
     public int getSize() {
-        return 0;
+        return size;
     }
 
     @Override
