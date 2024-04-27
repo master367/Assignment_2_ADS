@@ -1,4 +1,5 @@
 import java.util.Iterator;
+import java.util.NoSuchElementException;
 
 public class MyArrayList <T> implements MyList<T> {
     private Object[] array;
@@ -24,9 +25,7 @@ public class MyArrayList <T> implements MyList<T> {
         capacity = 2 * capacity;
         Object[] arrayTemp = new Object[capacity];
 
-        for(int i = 0; i < size; i++){
-            arrayTemp[i] = array[i];
-        }
+        if (size >= 0) System.arraycopy(array, 0, arrayTemp, 0, size);
 
         array = arrayTemp;
     }
@@ -65,12 +64,22 @@ public class MyArrayList <T> implements MyList<T> {
     }
     @Override
     public T getFirst() {
-        return null;
+        if (size == 0) {
+            throw new NoSuchElementException();
+        }
+        else{
+            return (T) array[0];
+        }
     }
 
     @Override
     public T getLast() {
-        return null;
+        if (size == 0) {
+            throw new NoSuchElementException();
+        }
+        else {
+            return (T) array[size-1];
+        }
     }
 
     @Override
@@ -83,55 +92,90 @@ public class MyArrayList <T> implements MyList<T> {
     }
     @Override
     public void clear() {
-        array = (T[]) new Object[5];
+        array = new Object[5];
         size = 0;
     }
     @Override
     public void removeFirst() {
-
+        remove(0);
     }
 
     @Override
     public void removeLast() {
-
+        remove(size-1);
     }
     @Override
     public int indexOf(Object object) {
+        for(int i = 0; i < size; i++){
+            if (get(i).equals(object)){
+                return i;
+            }
+        }
         return 0;
     }
 
     @Override
     public int lastIndexOf(Object object) {
-        return 0;
+        return size-1;
     }
 
     @Override
     public boolean exists(Object object) {
+        for (int i = 0; i < size; i++) {
+            if (array[i] == null && object == null) {
+
+                return true;
+            } else if (array[i] != null && array[i].equals(object)) {
+
+                return true;
+            }
+        }
         return false;
     }
 
     @Override
     public Object[] toArray() {
-        return new Object[0];
+        Object[] result = new Object[size];
+
+        System.arraycopy(array, 0, result, 0, size);
+        return result;
     }
 
     @Override
-    public void set(int index, T item) {
-
+    public Object set(int index, T item) {
+        return array[index] = item;
     }
 
     @Override
     public void add(int index, T item) {
-
+        if(size == capacity){
+            increaseBuff();
+        }
+        for(int i = size; i>index; i--){
+            array[i] = array[i-1];
+        }
+        array[index] = item;
+        size++;
     }
 
     @Override
     public void addFirst(T item) {
-
+        if(size == capacity){
+            increaseBuff();
+        }
+        for( int i = size; i > 0; i--){
+            array[i] = array[i-1];
+        }
+        array[0] = item;
+        size++;
     }
 
     @Override
     public void addLast(T item) {
-
+        if(size == capacity){
+            increaseBuff();
+        }
+        array[size] = item;
+        size++;
     }
 }
