@@ -56,7 +56,21 @@ public class MyArrayList <T> implements MyList<T> {
 
     @Override
     public Iterator<T> iterator() {
-        return null;
+        return new Iterator<T>() {
+            private int currentIndex = 0;
+
+            @Override
+            public boolean hasNext() {
+                return currentIndex < size;
+            }
+
+            @Override
+            public T next() {
+                if (!hasNext())
+                    throw new NoSuchElementException();
+                return (T) array[currentIndex++];
+            }
+        };
     }
     @Override
     public int getSize() {

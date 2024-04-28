@@ -1,4 +1,5 @@
 import java.util.Iterator;
+import java.util.NoSuchElementException;
 
 public class MyLInkedLIst<T> implements MyList<T> {
 
@@ -77,7 +78,22 @@ public class MyLInkedLIst<T> implements MyList<T> {
 
     @Override
     public Iterator<T> iterator() {
-        return null;
+        return new Iterator<T>() {
+            private MyNode<T> current = head;
+
+            @Override
+            public boolean hasNext() {
+                return current != null;
+            }
+
+            @Override
+            public T next() {
+                if (!hasNext()) throw new NoSuchElementException("No more elements in the list");
+                T data = current.data;
+                current = current.next;
+                return data;
+            }
+        };
     }
 
     @Override

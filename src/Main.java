@@ -2,6 +2,9 @@ public class Main {
     public static void main(String[] args) {
         MyArrayList<Integer> arrayList = new MyArrayList<>();
         MyLInkedLIst<Integer> lInkedLIst = new MyLInkedLIst<>();
+        MyStack<Integer> stack = new MyStack<>();
+        MyQueue<Integer> queue = new MyQueue<>();
+        MyMinHeap<Integer> myMinHeap = new MyMinHeap<Integer>();
 
 
 
@@ -40,23 +43,39 @@ public class Main {
         System.out.println("last element: " + lInkedLIst.getLast());
         System.out.println("first element: " + lInkedLIst.getFirst());
 
-        for (int i = 0; i < lInkedLIst.getSize(); i++) System.out.print(lInkedLIst.get(i) + "  ");
+        System.out.println(stack.empty());
+        stack.push(1);
+        stack.push(6);
+        stack.push(3);
+        stack.push(90);
+        stack.push(24);
 
-        lInkedLIst.sort();
-        System.out.println(" ");
-        System.out.println(lInkedLIst.getSize());
-        for (int i = 0; i < lInkedLIst.getSize(); i++) System.out.print(lInkedLIst.get(i) + "  ");
-        lInkedLIst.removeFirst();
-        System.out.println(" ");
-        System.out.println(lInkedLIst.getSize());
-        System.out.println(" ");
-        for (int i = 0; i < lInkedLIst.getSize(); i++) System.out.print(lInkedLIst.get(i) + "  ");
-        lInkedLIst.removeLast();
+        System.out.println(stack.empty());
+        System.out.println(stack.size());
+        System.out.println(stack.pop());
 
-        System.out.println(" ");
-        for (int i = 0; i < lInkedLIst.getSize(); i++) System.out.print(lInkedLIst.get(i) + "  ");
-        System.out.println(" ");
-        System.out.println(lInkedLIst.getSize());
+
+        System.out.println(queue.empty());
+        queue.engueue(14);
+        queue.engueue(148);
+        queue.engueue(149);
+        queue.engueue(145);
+
+        System.out.println(queue.peek());
+        System.out.println(queue.dequeue());
+        System.out.println(queue.dequeue());
+
+        myMinHeap.insert(3);
+        myMinHeap.insert(4);
+        myMinHeap.insert(7);
+        myMinHeap.insert(8);
+        myMinHeap.insert(32);
+
+        System.out.println(myMinHeap.getMin());
+        System.out.println(myMinHeap.extractMin());
+        System.out.println(myMinHeap.extractMin());
+
+
 
 
 
